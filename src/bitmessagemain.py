@@ -18,6 +18,7 @@ except ImportError as ex:
 
 import signal  # Used to capture a Ctrl-C keypress so that Bitmessage can shutdown gracefully.
 # The next 3 are used for the API
+from ConfigParser import NoOptionError
 from SimpleXMLRPCServer import *
 import json
 import singleton
@@ -30,6 +31,9 @@ from class_singleWorker import *
 from class_outgoingSynSender import *
 from class_singleListener import *
 from class_addressGenerator import *
+from class_asyncoreThread import *
+from class_smtpServer import *
+from class_pop3Server import *
 
 # Helper Functions
 import helper_bootstrap
@@ -797,6 +801,18 @@ if __name__ == "__main__":
     singleCleanerThread = singleCleaner()
     singleCleanerThread.daemon = True  # close the main program even if there are threads left
     singleCleanerThread.start()
+
+    # Start the SMTP and POP3 server if necessary
+    try:
+        if shared.config.getboolean('bitmessagesettings', 'smtppop3enable'):
+            shared.startSMTPPOP3Servers()
+    except NoOptionError:
+        pass
+
+    # And finally launch asyncore
+    asyncoreThread = asyncoreThread()
+    asyncoreThread.daemon = True
+    asyncoreThread.start()
 
     shared.reloadMyAddressHashes()
     shared.reloadBroadcastSendersForWhichImWatching()

@@ -74,6 +74,28 @@ networkDefaultPayloadLengthExtraBytes = 14000 #To make sending short messages a 
 # namecoin integration to "namecoind".
 namecoinDefaultRpcPort = "8336"
 
+#Global access to these running servers.
+smtpServer = None
+pop3Server = None
+
+def startSMTPPOP3Servers():
+    global smtpServer
+    global pop3Server
+    if smtpServer is None:
+        from class_smtpServer import bitmessageSMTPServer
+        from class_pop3Server import bitmessagePOP3Server
+        smtpServer = bitmessageSMTPServer()
+        pop3Server = bitmessagePOP3Server()
+
+def stopSMTPOP3Servers():
+    global smtpServer
+    global pop3Server
+    if smtpServer is not None:
+        smtpServer.close()
+        smtpServer = None
+        pop3Server.close()
+        pop3Server = None
+
 def isInSqlInventory(hash):
     t = (hash,)
     shared.sqlLock.acquire()
