@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'help.ui'
 #
-# Created: Mon Mar 11 11:20:54 2013
-#      by: PyQt4 UI code generator 4.9.4
+# Created: Fri Aug  9 16:54:32 2013
+#      by: PyQt4 UI code generator 4.10.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -12,7 +12,16 @@ from PyQt4 import QtCore, QtGui
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
-    _fromUtf8 = lambda s: s
+    def _fromUtf8(s):
+        return s
+
+try:
+    _encoding = QtGui.QApplication.UnicodeUTF8
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig, _encoding)
+except AttributeError:
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig)
 
 class Ui_helpDialog(object):
     def setupUi(self, helpDialog):
@@ -42,7 +51,7 @@ class Ui_helpDialog(object):
         QtCore.QMetaObject.connectSlotsByName(helpDialog)
 
     def retranslateUi(self, helpDialog):
-        helpDialog.setWindowTitle(QtGui.QApplication.translate("helpDialog", "Help", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelHelpURI.setText(QtGui.QApplication.translate("helpDialog", "<a href=\"http://Bitmessage.org/wiki/PyBitmessage_Help\">http://Bitmessage.org/wiki/PyBitmessage_Help</a>", None, QtGui.QApplication.UnicodeUTF8))
-        self.label.setText(QtGui.QApplication.translate("helpDialog", "As Bitmessage is a collaborative project, help can be found online in the Bitmessage Wiki:", None, QtGui.QApplication.UnicodeUTF8))
+        helpDialog.setWindowTitle(_translate("helpDialog", "Help", None))
+        self.labelHelpURI.setText(_translate("helpDialog", "<a href=\"http://Bitmessage.org/wiki/PyBitmessage_Help\">http://Bitmessage.org/wiki/PyBitmessage_Help</a>", None))
+        self.label.setText(_translate("helpDialog", "As Bitmessage is a collaborative project, help can be found online in the Bitmessage Wiki:", None))
 

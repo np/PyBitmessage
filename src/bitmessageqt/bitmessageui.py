@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'bitmessageui.ui'
 #
-# Created: Mon Jul 29 14:54:01 2013
-#      by: PyQt4 UI code generator 4.10.1
+# Created: Fri Aug  9 16:54:32 2013
+#      by: PyQt4 UI code generator 4.10.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -110,7 +110,13 @@ class Ui_MainWindow(object):
         font.setPointSize(7)
         self.pushButtonLoadFromAddressBook.setFont(font)
         self.pushButtonLoadFromAddressBook.setObjectName(_fromUtf8("pushButtonLoadFromAddressBook"))
-        self.gridLayout_2.addWidget(self.pushButtonLoadFromAddressBook, 3, 2, 1, 2)
+        self.gridLayout_2.addWidget(self.pushButtonLoadFromAddressBook, 3, 2, 1, 1)
+        self.pushButtonFetchNamecoinID = QtGui.QPushButton(self.send)
+        font = QtGui.QFont()
+        font.setPointSize(7)
+        self.pushButtonFetchNamecoinID.setFont(font)
+        self.pushButtonFetchNamecoinID.setObjectName(_fromUtf8("pushButtonFetchNamecoinID"))
+        self.gridLayout_2.addWidget(self.pushButtonFetchNamecoinID, 3, 3, 1, 1)
         self.label_4 = QtGui.QLabel(self.send)
         self.label_4.setObjectName(_fromUtf8("label_4"))
         self.gridLayout_2.addWidget(self.label_4, 5, 0, 1, 1)
@@ -519,6 +525,7 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "Received", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.inbox), _translate("MainWindow", "Inbox", None))
         self.pushButtonLoadFromAddressBook.setText(_translate("MainWindow", "Load from Address book", None))
+        self.pushButtonFetchNamecoinID.setText(_translate("MainWindow", "Fetch Namecoin ID", None))
         self.label_4.setText(_translate("MainWindow", "Message:", None))
         self.label_3.setText(_translate("MainWindow", "Subject:", None))
         self.radioButtonSpecific.setText(_translate("MainWindow", "Send to one or more specific people", None))

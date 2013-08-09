@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'regenerateaddresses.ui'
 #
-# Created: Tue Apr 30 12:21:16 2013
-#      by: PyQt4 UI code generator 4.9.4
+# Created: Fri Aug  9 16:54:33 2013
+#      by: PyQt4 UI code generator 4.10.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -12,7 +12,16 @@ from PyQt4 import QtCore, QtGui
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
-    _fromUtf8 = lambda s: s
+    def _fromUtf8(s):
+        return s
+
+try:
+    _encoding = QtGui.QApplication.UnicodeUTF8
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig, _encoding)
+except AttributeError:
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig)
 
 class Ui_regenerateAddressesDialog(object):
     def setupUi(self, regenerateAddressesDialog):
@@ -101,15 +110,15 @@ class Ui_regenerateAddressesDialog(object):
         QtCore.QMetaObject.connectSlotsByName(regenerateAddressesDialog)
 
     def retranslateUi(self, regenerateAddressesDialog):
-        regenerateAddressesDialog.setWindowTitle(QtGui.QApplication.translate("regenerateAddressesDialog", "Regenerate Existing Addresses", None, QtGui.QApplication.UnicodeUTF8))
-        self.groupBox.setTitle(QtGui.QApplication.translate("regenerateAddressesDialog", "Regenerate existing addresses", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_6.setText(QtGui.QApplication.translate("regenerateAddressesDialog", "Passphrase", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_11.setText(QtGui.QApplication.translate("regenerateAddressesDialog", "Number of addresses to make based on your passphrase:", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_2.setText(QtGui.QApplication.translate("regenerateAddressesDialog", "Address version Number:", None, QtGui.QApplication.UnicodeUTF8))
-        self.lineEditAddressVersionNumber.setText(QtGui.QApplication.translate("regenerateAddressesDialog", "3", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_3.setText(QtGui.QApplication.translate("regenerateAddressesDialog", "Stream number:", None, QtGui.QApplication.UnicodeUTF8))
-        self.lineEditStreamNumber.setText(QtGui.QApplication.translate("regenerateAddressesDialog", "1", None, QtGui.QApplication.UnicodeUTF8))
-        self.checkBoxEighteenByteRipe.setText(QtGui.QApplication.translate("regenerateAddressesDialog", "Spend several minutes of extra computing time to make the address(es) 1 or 2 characters shorter", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_4.setText(QtGui.QApplication.translate("regenerateAddressesDialog", "You must check (or not check) this box just like you did (or didn\'t) when you made your addresses the first time.", None, QtGui.QApplication.UnicodeUTF8))
-        self.label.setText(QtGui.QApplication.translate("regenerateAddressesDialog", "If you have previously made deterministic addresses but lost them due to an accident (like hard drive failure), you can regenerate them here. If you used the random number generator to make your addresses then this form will be of no use to you.", None, QtGui.QApplication.UnicodeUTF8))
+        regenerateAddressesDialog.setWindowTitle(_translate("regenerateAddressesDialog", "Regenerate Existing Addresses", None))
+        self.groupBox.setTitle(_translate("regenerateAddressesDialog", "Regenerate existing addresses", None))
+        self.label_6.setText(_translate("regenerateAddressesDialog", "Passphrase", None))
+        self.label_11.setText(_translate("regenerateAddressesDialog", "Number of addresses to make based on your passphrase:", None))
+        self.label_2.setText(_translate("regenerateAddressesDialog", "Address version Number:", None))
+        self.lineEditAddressVersionNumber.setText(_translate("regenerateAddressesDialog", "3", None))
+        self.label_3.setText(_translate("regenerateAddressesDialog", "Stream number:", None))
+        self.lineEditStreamNumber.setText(_translate("regenerateAddressesDialog", "1", None))
+        self.checkBoxEighteenByteRipe.setText(_translate("regenerateAddressesDialog", "Spend several minutes of extra computing time to make the address(es) 1 or 2 characters shorter", None))
+        self.label_4.setText(_translate("regenerateAddressesDialog", "You must check (or not check) this box just like you did (or didn\'t) when you made your addresses the first time.", None))
+        self.label.setText(_translate("regenerateAddressesDialog", "If you have previously made deterministic addresses but lost them due to an accident (like hard drive failure), you can regenerate them here. If you used the random number generator to make your addresses then this form will be of no use to you.", None))
 

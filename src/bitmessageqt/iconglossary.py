@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'iconglossary.ui'
 #
-# Created: Thu Jun 13 20:15:48 2013
-#      by: PyQt4 UI code generator 4.10.1
+# Created: Fri Aug  9 16:54:32 2013
+#      by: PyQt4 UI code generator 4.10.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -86,13 +86,3 @@ class Ui_iconGlossaryDialog(object):
         self.label_6.setText(_translate("iconGlossaryDialog", "You do have connections with other peers and your firewall is correctly configured.", None))
 
 import bitmessage_icons_rc
-
-if __name__ == "__main__":
-    import sys
-    app = QtGui.QApplication(sys.argv)
-    iconGlossaryDialog = QtGui.QDialog()
-    ui = Ui_iconGlossaryDialog()
-    ui.setupUi(iconGlossaryDialog)
-    iconGlossaryDialog.show()
-    sys.exit(app.exec_())
-

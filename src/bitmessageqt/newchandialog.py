@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'newchandialog.ui'
 #
-# Created: Mon Jul 22 01:05:35 2013
+# Created: Fri Aug  9 16:54:32 2013
 #      by: PyQt4 UI code generator 4.10.2
 #
 # WARNING! All changes made in this file will be lost!

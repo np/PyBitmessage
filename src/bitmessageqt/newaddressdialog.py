@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'newaddressdialog.ui'
 #
-# Created: Thu Jun 13 20:12:21 2013
-#      by: PyQt4 UI code generator 4.10.1
+# Created: Fri Aug  9 16:54:32 2013
+#      by: PyQt4 UI code generator 4.10.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -190,14 +190,4 @@ class Ui_NewAddressDialog(object):
         self.label_3.setText(_translate("NewAddressDialog", " (best if this is the first of many addresses you will create)", None))
         self.radioButtonExisting.setText(_translate("NewAddressDialog", "Use the same stream as an existing address", None))
         self.label_4.setText(_translate("NewAddressDialog", "(saves you some bandwidth and processing power)", None))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtGui.QApplication(sys.argv)
-    NewAddressDialog = QtGui.QDialog()
-    ui = Ui_NewAddressDialog()
-    ui.setupUi(NewAddressDialog)
-    NewAddressDialog.show()
-    sys.exit(app.exec_())
 
