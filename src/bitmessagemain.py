@@ -654,20 +654,26 @@ class MySimpleXMLRPCRequestHandler(SimpleXMLRPCRequestHandler):
                 status, = row
                 return status
         elif method == 'addSubscription':
+            label = ''
+            receivingIdentity = ''
             if len(params) == 0:
                 return 'API Error 0000: I need parameters!'
-            if len(params) == 1:
-                address, = params
-                label == ''
-            if len(params) == 2:
-                address, label = params
-                label = label.decode('base64')
+            if len(params) >= 1:
+                address = params[0]
+            if len(params) >= 2:
+                label = params[1].decode('base64')
                 try:
                     unicode(label, 'utf-8')
                 except:
                     return 'API Error 0017: Label is not valid UTF-8 data.'
-            if len(params) > 2:
-                return 'API Error 0000: I need either 1 or 2 parameters!'
+            if len(params) >= 3:
+                receivingIdentity = params[2].decode('base64')
+                try:
+                    unicode(receivingIdentity, 'utf-8')
+                except:
+                    return 'API Error 0017: Receiving Identity is not valid UTF-8 data.'
+            if len(params) > 3:
+                return 'API Error 0000: I need either 1, 2 or 3 parameters!'
             address = addBMIfNotPresent(address)
             status, addressVersionNumber, streamNumber, toRipe = decodeAddress(
                 address)
@@ -697,10 +703,10 @@ class MySimpleXMLRPCRequestHandler(SimpleXMLRPCRequestHandler):
             shared.sqlLock.release()
             if queryreturn != []:
                 return 'API Error 0016: You are already subscribed to that address.'
-            t = (label, address, True)
+            t = (label, address, receivingIdentity, True)
             shared.sqlLock.acquire()
             shared.sqlSubmitQueue.put(
-                '''INSERT INTO subscriptions VALUES (?,?,?)''')
+                '''INSERT INTO subscriptions (label, address, receiving_identity, enabled) VALUES (?,?,?,?)''')
             shared.sqlSubmitQueue.put(t)
             queryreturn = shared.sqlReturnQueue.get()
             shared.sqlSubmitQueue.put('commit')
@@ -729,17 +735,17 @@ class MySimpleXMLRPCRequestHandler(SimpleXMLRPCRequestHandler):
             return 'Deleted subscription if it existed.'
         elif method == 'listSubscriptions':
             shared.sqlLock.acquire()
-            shared.sqlSubmitQueue.put('''SELECT label, address, enabled FROM subscriptions''')
+            shared.sqlSubmitQueue.put('''SELECT label, address, receiving_identity, enabled FROM subscriptions''')
             shared.sqlSubmitQueue.put('')
             queryreturn = shared.sqlReturnQueue.get()
             shared.sqlLock.release()
             data = '{"subscriptions":['
             for row in queryreturn:
-                label, address, enabled = row
+                label, address, receivingIdentity, enabled = row
                 label = shared.fixPotentiallyInvalidUTF8Data(label)
                 if len(data) > 20:
                     data += ','
-                data += json.dumps({'label':label.encode('base64'), 'address': address, 'enabled': enabled == 1}, indent=4, separators=(',',': '))
+                data += json.dumps({'label':label.encode('base64'), 'address': address, 'receiving_identity':receivingIdentity, 'enabled': enabled == 1}, indent=4, separators=(',',': '))
             data += ']}'
             return data
         elif method == 'clientStatus':
